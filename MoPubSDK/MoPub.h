@@ -39,6 +39,22 @@
 #import "MPRewardedVideoError.h"
 #import "MPViewabilityAdapter.h"
 #import "MPViewabilityOption.h"
+#import "MPAdDestinationDisplayAgent.h"
+#import "MPImageDownloadQueue.h"
+#import "MPNativeCache.h"
+#import "MPActivityViewControllerHelper.h"
+#import "MPActivityViewControllerHelper+TweetShare.h"
+#import "MPURLResolver.h"
+#import "MPGlobal.h"
+#import "MPURLActionInfo.h"
+#import "MPEnhancedDeeplinkRequest.h"
+#import "MPProgressOverlayView.h"
+#import "MPAdBrowserController.h"
+#import "MPStoreKitProvider.h"
+#import "MPWebView.h"
+#import "MPCoreInstanceProvider.h"
+#import "MPReachability.h"
+
 
 #if MP_HAS_NATIVE_PACKAGE
 #import "MPNativeAd.h"
