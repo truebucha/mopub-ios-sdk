@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F5A56C4D228A8D9500E393EE /* VIBMoPub */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F5A56C4E228A8D9500E393EE /* Build configuration list for PBXAggregateTarget "VIBMoPub" */;
+			buildPhases = (
+				F5A56C51228A8DA100E393EE /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = VIBMoPub;
+			productName = VIBMoPub;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2A2701EF2020FD68004A72E6 /* MPViewabilityOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A2701ED2020FC7E004A72E6 /* MPViewabilityOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A2701F02020FD71004A72E6 /* MOPUBDisplayAgentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A2701EE2020FCDC004A72E6 /* MOPUBDisplayAgentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1535,6 +1549,7 @@
 		BCF9BDB92119FA7800A2F557 /* NSURLSessionTask+Testing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+Testing.m"; sourceTree = "<group>"; };
 		BCFE67D7208508D3005E458A /* MPConsentChangedReason.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPConsentChangedReason.h; sourceTree = "<group>"; };
 		BCFE67D8208508D3005E458A /* MPConsentChangedReason.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPConsentChangedReason.m; sourceTree = "<group>"; };
+		F5A56C55228AC6CA00E393EE /* Script_Framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Script_Framework.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1928,6 +1943,7 @@
 		AEF1F31F16EF9AD700273462 = {
 			isa = PBXGroup;
 			children = (
+				F5A56C54228AC6CA00E393EE /* BuildScript */,
 				AEF9D4C6171CA895005AAA5A /* MoPubSDK */,
 				570A005C19D6206800065388 /* MoPubResources */,
 				2AAA8DFA1D95C77B006962E8 /* MoPubSDKTests */,
@@ -2502,6 +2518,14 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		F5A56C54228AC6CA00E393EE /* BuildScript */ = {
+			isa = PBXGroup;
+			children = (
+				F5A56C55228AC6CA00E393EE /* Script_Framework.sh */,
+			);
+			path = BuildScript;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2836,6 +2860,10 @@
 					570A005A19D6206800065388 = {
 						CreatedOnToolsVersion = 6.0;
 					};
+					F5A56C4D228A8D9500E393EE = {
+						CreatedOnToolsVersion = 10.2.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = AEF1F32316EF9AD700273462 /* Build configuration list for PBXProject "MoPubSDK" */;
@@ -2856,6 +2884,7 @@
 				570A005A19D6206800065388 /* MoPubResources */,
 				2AAA8DF81D95C77B006962E8 /* MoPubSDKTests */,
 				2AF030C02016723700909F29 /* MoPubSDKFramework */,
+				F5A56C4D228A8D9500E393EE /* VIBMoPub */,
 			);
 		};
 /* End PBXProject section */
@@ -2964,6 +2993,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". \"${SRCROOT}/Scripts/mraid_build.sh\"\ncopyMRAIDToResources \"${SRCROOT}\"";
+		};
+		F5A56C51228A8DA100E393EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/BuildScript/Script_Framework.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3681,6 +3727,7 @@
 		2AF030C62016723700909F29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3694,6 +3741,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5.6.0;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4S7XS533V3;
@@ -3718,6 +3766,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mopub.MoPubSDKFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_SWIFT_SYMBOLS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3727,6 +3777,7 @@
 		2AF030C72016723700909F29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3741,6 +3792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 5.6.0;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4S7XS533V3;
@@ -3765,8 +3817,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mopub.MoPubSDKFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_SWIFT_SYMBOLS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s";
+				VALID_ARCHS = "$(ARCHS_STANDARD) armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -4007,6 +4061,32 @@
 			};
 			name = Release;
 		};
+		F5A56C4F228A8D9500E393EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_TARGET_NAME = MoPubSDKFramework;
+				INFOPLIST_FILE = "\"${SRCROOT}/MoPubSDKFramework/Info.plist\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = "\"${SRCROOT}/MoPubSDKFramework/module.modulemap\"";
+				OUTPUT_FOLDER = "\"${SRCROOT}/VIBFramework\"";
+				PRODUCT_NAME = MoPubSDKFramework;
+			};
+			name = Debug;
+		};
+		F5A56C50228A8D9500E393EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_TARGET_NAME = MoPubSDKFramework;
+				INFOPLIST_FILE = "\"${SRCROOT}/MoPubSDKFramework/Info.plist\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = "\"${SRCROOT}/MoPubSDKFramework/module.modulemap\"";
+				OUTPUT_FOLDER = "\"${SRCROOT}/VIBFramework\"";
+				PRODUCT_NAME = MoPubSDKFramework;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4060,6 +4140,15 @@
 			buildConfigurations = (
 				BCA00B951EF47A91006FF762 /* Debug */,
 				BCA00B961EF47A91006FF762 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5A56C4E228A8D9500E393EE /* Build configuration list for PBXAggregateTarget "VIBMoPub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5A56C4F228A8D9500E393EE /* Debug */,
+				F5A56C50228A8D9500E393EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
